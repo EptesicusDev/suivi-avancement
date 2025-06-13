@@ -88,7 +88,7 @@ const percentageDr = computed(() => {
                                 </dd>
                             </div>
                             <div class="px-4 py-2 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
-                                <dt class="text-sm/6 sm:col-span-2 font-semibold">Démentèlement</dt>
+                                <dt class="text-sm/6 sm:col-span-2 font-semibold">Démantèlement</dt>
                                 <dd class="mt-1 text-sm/6 sm:col-span-2 sm:mt-0 text-zinc-700 flex items-center">
                                     <h6 class="grow">{{ store.currentWorkshop.d }}/{{ store.currentWorkshop.td }}</h6>
                                     <div class="flex">
