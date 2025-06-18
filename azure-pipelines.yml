@@ -39,4 +39,8 @@ steps:
     inputs:
       artifactName: 'nodejs-app'
       targetPath: '$(Build.ArtifactStagingDirectory)'
-    displayName: 'Publish pipeline artifact'
+      appType: 'webAppLinux'
+      appName: 'suivi-avancement'
+      runtimeStack: 'NODE|10.1'
+      startUpCommand: 'npm run start'
+      displayName: 'Publish pipeline artifact'
