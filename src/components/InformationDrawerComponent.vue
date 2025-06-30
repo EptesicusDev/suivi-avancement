@@ -19,6 +19,7 @@ const emit = defineEmits(["closeDrawer"])
 
 const onCloseButtonClicked = () => {
     emit("closeDrawer")
+    console.log(store.currentWorkshop.color)
 }
 
 const percentageA = computed(() => {
