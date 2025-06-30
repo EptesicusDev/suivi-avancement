@@ -3,8 +3,6 @@ import { useWorkshopStore } from '@/stores/workshops'
 import EvolutionIndicatorComponent from './EvolutionIndicatorComponent.vue'
 import IndicatorDefinitionComponent from './IndicatorDefinitionComponent.vue'
 import { computed } from 'vue'
-import { storeToRefs } from 'pinia'
-import { get } from '@vueuse/core'
 
 const store = useWorkshopStore()
 const props = defineProps({
