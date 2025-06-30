@@ -4,7 +4,8 @@ import CloseButtonComponent from './CloseButtonComponent.vue'
 import BarGraphComponent from './BarGraphComponent.vue'
 import SelectComponent from './SelectComponent.vue'
 import { useWorkshopStore } from '@/stores/workshops'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
+import IndicatorDefinitionComponent from './IndicatorDefinitionComponent.vue'
 
 const props = defineProps({
     isDrawerOpen: {
@@ -43,7 +44,7 @@ const percentageDr = computed(() => {
 
 <template>
     <Transition>
-        <div v-if="props.isDrawerOpen" id="testtets"
+        <div v-if="props.isDrawerOpen"
             class="absolute top-0 left-0 h-screen bg-white w-1/4 shadow-md pointer-events-auto border-r border-r-zinc-300 overflow-y-scroll">
             <img :src="'/src/assets/images/' + store.currentWorkshop.image + '.jpg'" class="w-full"
                 :alt="store.currentWorkshop.image">
@@ -67,7 +68,10 @@ const percentageDr = computed(() => {
                     <div class="border-t border-gray-100">
                         <dl class="divide-y divide-gray-100">
                             <div class="px-4 py-2 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
-                                <dt class="text-sm/6 sm:col-span-2 font-semibold">Caractérisation</dt>
+                                <dt class="flex items-center text-sm/6 sm:col-span-2 font-semibold">
+                                    Caractérisation
+                                    <IndicatorDefinitionComponent :title="'Caractérisation'"/>
+                                </dt>
                                 <dd class="mt-1 text-sm/6 sm:col-span-2 sm:mt-0 text-zinc-700 flex items-center">
                                     <h6 class="grow">{{ store.currentWorkshop.c }}/{{ store.currentWorkshop.tc }}</h6>
                                     <div class="flex justify-end">
@@ -79,7 +83,10 @@ const percentageDr = computed(() => {
                                 </dd>
                             </div>
                             <div class="px-4 py-2 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
-                                <dt class="text-sm/6 sm:col-span-2 font-semibold">Assainissement</dt>
+                                <dt class="flex items-center text-sm/6 sm:col-span-2 font-semibold">
+                                    Assainissement
+                                    <IndicatorDefinitionComponent :title="'Assainissement'"/>
+                                </dt>
                                 <dd class="mt-1 text-sm/6 sm:col-span-2 sm:mt-0 text-zinc-700 flex items-center">
                                     <h6 class="grow">{{ store.currentWorkshop.a }}/{{ store.currentWorkshop.ta }}</h6>
                                     <div class="flex justify-end">
@@ -91,7 +98,10 @@ const percentageDr = computed(() => {
                                 </dd>
                             </div>
                             <div class="px-4 py-2 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
-                                <dt class="text-sm/6 sm:col-span-2 font-semibold">Démantèlement</dt>
+                                <dt class="flex items-center text-sm/6 sm:col-span-2 font-semibold">
+                                    Démantèlement
+                                    <IndicatorDefinitionComponent :title="'Démantèlement'"/>
+                                </dt>
                                 <dd class="mt-1 text-sm/6 sm:col-span-2 sm:mt-0 text-zinc-700 flex items-center">
                                     <h6 class="grow">{{ store.currentWorkshop.d }}/{{ store.currentWorkshop.td }}</h6>
                                     <div class="flex">
@@ -103,7 +113,10 @@ const percentageDr = computed(() => {
                                 </dd>
                             </div>
                             <div class="px-4 py-2 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-0">
-                                <dt class="text-sm/6 sm:col-span-2 font-semibold">Déclassement radio.</dt>
+                                <dt class="flex items-center text-sm/6 sm:col-span-2 font-semibold">
+                                    Déclassement radio.
+                                    <IndicatorDefinitionComponent :title="'Déclassement radio'"/>
+                                    </dt>
                                 <dd class="mt-1 text-sm/6 sm:col-span-2 sm:mt-0 text-zinc-700 flex items-center">
                                     <h6 class="grow">{{ store.currentWorkshop.dr }}/{{ store.currentWorkshop.tdr }}</h6>
                                     <div class="flex justify-end">

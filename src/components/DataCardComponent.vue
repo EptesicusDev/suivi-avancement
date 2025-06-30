@@ -1,6 +1,7 @@
 <script setup>
 import { useWorkshopStore } from '@/stores/workshops';
 import EvolutionIndicatorComponent from './EvolutionIndicatorComponent.vue'
+import IndicatorDefinitionComponent from './IndicatorDefinitionComponent.vue';
 import { computed } from 'vue';
 
 const store = useWorkshopStore()
@@ -26,10 +27,11 @@ const inb = computed(() => {
 </script>
 
 <template>
-    <div class="bg-white m-2 p-4 shadow-md rounded-xl border border-zinc-300 w-73">
+    <div class="bg-white m-2 p-4 shadow-md rounded-xl border border-zinc-300 w-80">
         <span v-if="inb != ''" class=" absolute right-6 ml-2 inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">{{ inb }}</span>
         <div class="smooth-redim flex w-full">
-            <h3 class="grow">{{ props.title }}</h3>
+            <h3>{{ props.title }}</h3>
+            <IndicatorDefinitionComponent :title="props.title" />
         </div>
         <h2>{{ props.value }}</h2>
         <div class="flex items-center">

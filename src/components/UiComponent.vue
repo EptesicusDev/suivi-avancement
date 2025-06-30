@@ -14,7 +14,6 @@ const props = defineProps({
         required: true
     }
 })
-
 const emit = defineEmits(["closeDrawer"])
 
 const closeDrawer = () => {
@@ -67,7 +66,7 @@ const displayDrEvolution = computed(() => {
 </script>
 
 <template>
-    <div class="pointer-events-none">
+    <div id="ui" class="pointer-events-none">
         <InformationDrawerComponent :is-drawer-open="props.isDrawerOpen" @close-drawer="closeDrawer" />
         <TopFloatingComponent :is-drawer-open="props.isDrawerOpen">
             <h1 class="w-screen text-center mt-4">Suivi d'avancement DEM et RCD UP2-400</h1>

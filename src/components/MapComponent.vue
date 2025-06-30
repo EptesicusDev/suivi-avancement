@@ -640,9 +640,12 @@ onMounted(() => {
         mapEl.addEventListener("mouseup", onMouseUp)
         mapEl.addEventListener("wheel", onWheel)
     })
+    /*
+    // polygon drawing tool
     map.on('click', (e) => {
         document.getElementById('coords').innerHTML += "<br>[" + e.lngLat.lng + ", " + e.lngLat.lat + "],"
     })
+    */
 })
 </script>
 
