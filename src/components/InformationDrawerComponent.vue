@@ -4,7 +4,7 @@ import CloseButtonComponent from './CloseButtonComponent.vue'
 import BarGraphComponent from './BarGraphComponent.vue'
 import SelectComponent from './SelectComponent.vue'
 import { useWorkshopStore } from '@/stores/workshops'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import IndicatorDefinitionComponent from './IndicatorDefinitionComponent.vue'
 
 const props = defineProps({
@@ -14,12 +14,20 @@ const props = defineProps({
     }
 })
 const store = useWorkshopStore()
-
+const printDate = ref("oeoe")
 const emit = defineEmits(["closeDrawer"])
 
 const onCloseButtonClicked = () => {
     emit("closeDrawer")
     console.log(store.currentWorkshop.color)
+}
+
+const updatePrintDate = () => {
+    var date = new Date()
+    printDate.value = date.toLocaleDateString("fr")
+    setTimeout(function() {
+        print()
+    }, 50)
 }
 
 const percentageA = computed(() => {
@@ -46,14 +54,14 @@ const percentageDr = computed(() => {
 <template>
     <Transition>
         <div v-if="props.isDrawerOpen"
-            class="absolute top-0 left-0 h-screen bg-white w-1/4 shadow-md pointer-events-auto border-r border-r-zinc-300 overflow-y-scroll">
-            <img :src="'/src/assets/images/' + store.currentWorkshop.image + '.jpg'" class="w-full"
+            class="drawer absolute top-0 left-0 h-screen bg-white w-1/4 shadow-md pointer-events-auto border-r border-r-zinc-300 overflow-y-scroll">
+            <img :src="'/src/assets/images/' + store.currentWorkshop.image + '.jpg'" class="w-full drawer-thumbnail"
                 :alt="store.currentWorkshop.image">
             <div class="px-8 pt-4 w-full">
                 <CloseButtonComponent @action="onCloseButtonClicked" />
                 <div class="flex">
                     <h1 class="heading grow">{{ store.currentWorkshop.workshop }}</h1>
-                    <SelectComponent :options="store.zoneOptions" />
+                    <SelectComponent :options="store.zoneOptions" @print="updatePrintDate" />
                 </div>
                 <div class="my-6">
                     <h1>INB {{ store.currentWorkshop.inb }}, {{ store.currentWorkshop.project }}</h1>
@@ -134,6 +142,9 @@ const percentageDr = computed(() => {
             </div>
             <div class="px-3">
                 <BarGraphComponent />
+            </div>
+            <div class="hidden print absolute bottom-1 w-full text-center bot">
+                <p>{{ printDate }}</p>
             </div>
         </div>
     </Transition>

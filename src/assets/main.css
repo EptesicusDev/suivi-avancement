@@ -110,3 +110,28 @@ details {
   border: 1px var(--color-zinc-300) var(--tw-border-style);
   box-shadow: var(--shadow-md);
 }
+@media print {
+  .drawer {
+    width: 100vw;
+    overflow-y: hidden;
+    background: none;
+  }
+
+  .data-card, .print-button, .close-button, #switch-perspective, details, #map, .indicator-description {
+    display: none;
+  }
+
+  .print {
+    display: block;
+  }
+
+  .drawer-thumbnail {
+    position: absolute;
+    width: 100vh;
+    object-fit: cover;
+    opacity: 0.15;
+    z-index: -1;
+    top: 50%;
+    transform: translate(0, -50%) rotate(-90deg) scale(2);
+  }
+}

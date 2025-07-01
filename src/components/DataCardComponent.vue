@@ -30,7 +30,7 @@ const currentWorkshop = computed({
 </script>
 
 <template>
-    <div class="bg-white m-2 p-4 shadow-md rounded-xl border border-zinc-300 w-80">
+    <div class="data-card bg-white m-2 p-4 shadow-md rounded-xl border border-zinc-300 w-80">
         <span v-if="currentWorkshop.color == 'red'" class="absolute right-6 ml-2 inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-red-600/10 ring-inset">{{ inb }}</span>
         <span v-if="currentWorkshop.color == 'green'" class="absolute right-6 ml-2 inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">{{ inb }}</span>
         <span v-if="currentWorkshop.color == 'blue'" class="absolute right-6 ml-2 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-blue-700/10 ring-inset">{{ inb }}</span>

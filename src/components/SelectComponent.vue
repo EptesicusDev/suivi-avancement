@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useWorkshopStore } from '@/stores/workshops'
 import { onClickOutside } from '@vueuse/core'
 import { useTemplateRef } from 'vue'
+import PrintButtonComponent from './PrintButtonComponent.vue'
 
 const props = defineProps({
     options: {
@@ -10,6 +11,7 @@ const props = defineProps({
         required: true
     }
 })
+const emit = defineEmits(["print"])
 const isDropdownOpen = ref(false)
 const store = useWorkshopStore()
 const target = useTemplateRef("target")
@@ -27,16 +29,21 @@ const formatZone = (zone) => {
     return (zone.length > 1 ? "" : "Zone ") + zone
 }
 
+const print = () => {
+    emit("print")
+}
+
 onClickOutside(target, () => {
     isDropdownOpen.value = false
 })
 </script>
 
 <template>
-    <div v-if="props.options.length > 1" class="relative inline-block text-left">
-        <div>
-            <button type="button" @click="toggleDropdown()"
-                class="cursor-pointer inline-flex w-max justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm text-zinc-900 shadow-sm border border-zinc-300 ring-inset hover:bg-gray-50"
+    <div class="relative inline-block text-left">
+        <div class="flex h-10">
+            <PrintButtonComponent @print="print"/>
+            <button v-show="props.options.length > 1" type="button" @click="toggleDropdown()"
+                class="ml-1 cursor-pointer inline-flex w-max justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm text-zinc-900 shadow-sm border border-zinc-300 ring-inset hover:bg-gray-50"
                 id="menu-button" aria-expanded="true" aria-haspopup="true">
                 {{ formatZone(store.currentWorkshop.zone) }}
                 <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
