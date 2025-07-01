@@ -7,16 +7,20 @@ const isDrawerOpen = ref(false)
 const openDrawer = () => {
   isDrawerOpen.value = true
 }
+const map = ref()
 
 const closeDrawer = () => {
   isDrawerOpen.value = false
 }
 
+const resetCoords = () => {
+  map.value.resetCoords()
+}
 </script>
 
 <template>
   <main>
-    <MapComponent @open-drawer="openDrawer" @close-drawer="closeDrawer" />
-    <UiComponent :is-drawer-open="isDrawerOpen" @close-drawer="closeDrawer" />
+    <MapComponent ref="map" @open-drawer="openDrawer" @close-drawer="closeDrawer" />
+    <UiComponent :is-drawer-open="isDrawerOpen" @close-drawer="closeDrawer" @reset-coords="resetCoords" />
   </main>
 </template>

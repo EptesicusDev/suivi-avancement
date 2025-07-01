@@ -117,7 +117,7 @@ details {
     background: none;
   }
 
-  .data-card, .print-button, .close-button, #switch-perspective, details, #map, .indicator-description, .zone-selector, .no-image {
+  .data-card, .print-button, .close-button, #switch-perspective, details, #map, .indicator-description, .zone-selector, .no-image, #reset-coords {
     display: none;
   }
 

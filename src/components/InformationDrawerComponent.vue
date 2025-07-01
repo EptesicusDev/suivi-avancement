@@ -28,6 +28,8 @@ const updatePrintDate = () => {
     printDate.value = date.toLocaleDateString("fr")
     if(store.currentWorkshop.image == "no")
         showThumbnail.value = "no-image"
+    else
+        showThumbnail.value = ""
     setTimeout(function() {
         print()
     }, 50)

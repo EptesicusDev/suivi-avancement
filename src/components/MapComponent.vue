@@ -509,11 +509,19 @@ const workshopBuildings = [
 var isDragging = false
 var map
 var markerElList = []
+var startCoords = [-1.878, 49.678638] // lon, lat
 
 const resetObjectSelection = () => {
     markerElList.forEach((markerEl) => {
         markerEl.children[0].classList.remove("workshop-marker-selected")
     })
+}
+
+const resetCoords = () => {
+    map.flyTo({
+            center: startCoords,
+            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
 }
 
 const onMouseDown = () => {
@@ -545,7 +553,7 @@ onMounted(() => {
         minZoom: 15, // far
         style:
             `https://api.maptiler.com/maps/streets/style.json?key=${import.meta.env.VITE_MAPTILER_API_KEY}`,
-        center: [-1.878, 49.678638], // lon, lat
+        center: startCoords,
         pitch: 55
     })
     map.on('load', () => {
@@ -647,6 +655,8 @@ onMounted(() => {
     })
     */
 })
+
+defineExpose({ resetCoords })
 </script>
 
 <template>

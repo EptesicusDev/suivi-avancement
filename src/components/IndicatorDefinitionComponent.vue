@@ -16,7 +16,8 @@ const bodies = {
     c: "Cet indicateur relète l'avancement de la caractérisation des salles et cellules nécessitant une consolidation de l'état physique et radiologique des équipement constiutant le coeur du procédé qu'elles abritent, afin d'établir les données de régérence pour les scénarios d'assainissement et de démantèlement.",
     a: "Cet inidicateur reflète l'avancement des activités de rinçage, de chasse matière, de reprise des écarts d'états initiaux et d'assainissement des équipements (cuves, boîtes à gants, fosses, etc.), en amont des opérations de démentèlement.",
     d: "Cet indicateur reflète l'avancement des activité de dépose et de démantèlement des équipement constituant le coeur du procédé.",
-    dr: "Cet indicateur reflète la progression du déclasssement radiologique des cellules zone rouge et orange afin de permettre un accès sans contrainte (protection respiratoire, ...)."
+    dr: "Cet indicateur reflète la progression du déclasssement radiologique des cellules zone rouge et orange afin de permettre un accès sans contrainte (protection respiratoire, ...).",
+    
 }
 
 const body = computed(() => {
