@@ -14,7 +14,8 @@ const props = defineProps({
     }
 })
 const store = useWorkshopStore()
-const printDate = ref("oeoe")
+const printDate = ref("blank")
+const showThumbnail = ref("")
 const emit = defineEmits(["closeDrawer"])
 
 const onCloseButtonClicked = () => {
@@ -25,6 +26,8 @@ const onCloseButtonClicked = () => {
 const updatePrintDate = () => {
     var date = new Date()
     printDate.value = date.toLocaleDateString("fr")
+    if(store.currentWorkshop.image == "no")
+        showThumbnail.value = "no-image"
     setTimeout(function() {
         print()
     }, 50)
@@ -55,7 +58,7 @@ const percentageDr = computed(() => {
     <Transition>
         <div v-if="props.isDrawerOpen"
             class="drawer absolute top-0 left-0 h-screen bg-white w-1/4 shadow-md pointer-events-auto border-r border-r-zinc-300 overflow-y-scroll">
-            <img :src="'/src/assets/images/' + store.currentWorkshop.image + '.jpg'" class="w-full drawer-thumbnail"
+            <img :src="'/src/assets/images/' + store.currentWorkshop.image + '.jpg'" class="w-full drawer-thumbnail" :class="showThumbnail"
                 :alt="store.currentWorkshop.image">
             <div class="px-8 pt-4 w-full">
                 <CloseButtonComponent @action="onCloseButtonClicked" />
