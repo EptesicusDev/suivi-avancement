@@ -10,10 +10,10 @@ const chartConfig = {
         {
             name: "Précédente mise à jour",
             data: [
-                store.currentOldWorkshop.c * 100 / store.currentOldWorkshop.tc,
-                store.currentOldWorkshop.a * 100 / store.currentOldWorkshop.ta,
-                store.currentOldWorkshop.d * 100 / store.currentOldWorkshop.td,
-                store.currentOldWorkshop.dr * 100 / store.currentOldWorkshop.tdr
+                store.currentOldWorkshop.indicator1 * 100 / store.currentOldWorkshop.totIndicator1,
+                store.currentOldWorkshop.indicator2 * 100 / store.currentOldWorkshop.totIndicator2,
+                store.currentOldWorkshop.indicator3 * 100 / store.currentOldWorkshop.totIndicator3,
+                store.currentOldWorkshop.indicator4 * 100 / store.currentOldWorkshop.totIndicator4
             ],
         }
     ],
@@ -115,20 +115,20 @@ const refresh = () => {
     chart.updateSeries([
         {
             data: [
-                formatToPercent(store.currentOldWorkshop.c * 100 / store.currentOldWorkshop.tc),
-                formatToPercent(store.currentOldWorkshop.a * 100 / store.currentOldWorkshop.ta),
-                formatToPercent(store.currentOldWorkshop.d * 100 / store.currentOldWorkshop.td),
-                formatToPercent(store.currentOldWorkshop.dr * 100 / store.currentOldWorkshop.tdr)
+                formatToPercent(store.currentOldWorkshop.indicator1 * 100 / store.currentOldWorkshop.totIndicator1),
+                formatToPercent(store.currentOldWorkshop.indicator2 * 100 / store.currentOldWorkshop.totIndicator2),
+                formatToPercent(store.currentOldWorkshop.indicator3 * 100 / store.currentOldWorkshop.totIndicator3),
+                formatToPercent(store.currentOldWorkshop.indicator4 * 100 / store.currentOldWorkshop.totIndicator4)
             ]
         }
     ])
     chart.appendSeries({
         name: "Dernière mise à jour",
         data: [
-            formatToPercent(store.currentWorkshop.c * 100 / store.currentWorkshop.tc - formatToPercent(store.currentOldWorkshop.c * 100 / store.currentOldWorkshop.tc)),
-            formatToPercent(store.currentWorkshop.a * 100 / store.currentWorkshop.ta - formatToPercent(store.currentOldWorkshop.a * 100 / store.currentOldWorkshop.ta)),
-            formatToPercent(store.currentWorkshop.d * 100 / store.currentWorkshop.td - formatToPercent(store.currentOldWorkshop.d * 100 / store.currentOldWorkshop.td)),
-            formatToPercent(store.currentWorkshop.dr * 100 / store.currentWorkshop.tdr - formatToPercent(store.currentOldWorkshop.dr * 100 / store.currentOldWorkshop.tdr))
+            formatToPercent(store.currentOldWorkshop.indicator1 * 100 / store.currentOldWorkshop.totIndicator1 - formatToPercent(store.currentOldWorkshop.indicator1 * 100 / store.currentOldWorkshop.totIndicator1)),
+            formatToPercent(store.currentWorkshop.indicator2 * 100 / store.currentWorkshop.totIndicator2 - formatToPercent(store.currentOldWorkshop.indicator2 * 100 / store.currentOldWorkshop.totIndicator2)),
+            formatToPercent(store.currentWorkshop.indicator3 * 100 / store.currentWorkshop.totIndicator3 - formatToPercent(store.currentOldWorkshop.indicator3 * 100 / store.currentOldWorkshop.totIndicator3)),
+            formatToPercent(store.currentWorkshop.indicator4 * 100 / store.currentWorkshop.totIndicator4 - formatToPercent(store.currentOldWorkshop.indicator4 * 100 / store.currentOldWorkshop.totIndicator4))
         ]
     })
 }

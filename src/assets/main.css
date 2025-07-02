@@ -127,11 +127,11 @@ details {
 
   .drawer-thumbnail {
     position: absolute;
-    width: 100vh;
+    height: 100vh;
     object-fit: cover;
     opacity: 0.15;
     z-index: -1;
     top: 50%;
-    transform: translate(0, -50%) rotate(-90deg) scale(2);
+    transform: translate(0%, -50%);
   }
 }

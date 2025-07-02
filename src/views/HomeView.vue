@@ -11,6 +11,7 @@ const map = ref()
 
 const closeDrawer = () => {
   isDrawerOpen.value = false
+  map.value.resetObjectSelection()
 }
 
 const resetCoords = () => {

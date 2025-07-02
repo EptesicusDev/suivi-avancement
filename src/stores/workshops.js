@@ -54,114 +54,62 @@ export const useWorkshopStore = defineStore("workshops", () => {
     oldWorkshops.value.push(workshop)
   }
 
-  function getCompletionA() {
+  function getIndicator(workshop, idx) {
+    switch(idx) {
+      case 1:
+        return workshop.indicator1
+      case 2:
+        return workshop.indicator2
+      case 3:
+        return workshop.indicator3
+      case 4:
+        return workshop.indicator4
+      case 5:
+        return workshop.indicator5
+    }
+  }
+
+  function getTotIndicator(workshop, idx) {
+    switch(idx) {
+      case 1:
+        return workshop.totIndicator1
+      case 2:
+        return workshop.totIndicator2
+      case 3:
+        return workshop.totIndicator3
+      case 4:
+        return workshop.totIndicator4
+      case 5:
+        return workshop.totIndicator5
+    }
+  }
+
+  function getCompletionIndicator(idx) {
     var sum = 0
     var sumOld = 0
     workshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sum += parseInt(workshop.a)
+      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4") {
+        sum += parseInt(getIndicator(workshop, idx))
+      }
     })
     oldWorkshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sumOld += parseInt(workshop.a)
+      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4") {
+        sumOld += parseInt(getIndicator(workshop, idx))
+      }
     })
     return { current: sum, old: sumOld }
   }
 
-  function getCompletionC() {
+  function getTotalIndicator(idx) {
     var sum = 0
     var sumOld = 0
     workshops.value.forEach((workshop) => {
       if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sum += parseInt(workshop.c)
+        sum += parseInt(getTotIndicator(workshop, idx))
     })
     oldWorkshops.value.forEach((workshop) => {
       if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sumOld += parseInt(workshop.c)
-    })
-    return { current: sum, old: sumOld }
-  }
-
-  function getCompletionD() {
-    var sum = 0
-    var sumOld = 0
-    workshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sum += parseInt(workshop.d)
-    })
-    oldWorkshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sumOld += parseInt(workshop.d)
-    })
-    return { current: sum, old: sumOld }
-  }
-
-  function getCompletionDr() {
-    var sum = 0
-    var sumOld = 0
-    workshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sum += parseInt(workshop.dr)
-    })
-    oldWorkshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sumOld += parseInt(workshop.dr)
-    })
-    return { current: sum, old: sumOld }
-  }
-
-  function getTotalA() {
-    var sum = 0
-    var sumOld = 0
-    workshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sum += parseInt(workshop.ta)
-    })
-    oldWorkshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sumOld += parseInt(workshop.ta)
-    })
-    return { current: sum, old: sumOld }
-  }
-  
-  function getTotalC() {
-    var sum = 0
-    var sumOld = 0
-    workshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sum += parseInt(workshop.tc)
-    })
-    oldWorkshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sumOld += parseInt(workshop.tc)
-    })
-    return { current: sum, old: sumOld }
-  }
-
-  function getTotalD() {
-    var sum = 0
-    var sumOld = 0
-    workshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sum += parseInt(workshop.td)
-    })
-    oldWorkshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sumOld += parseInt(workshop.td)
-    })
-    return { current: sum, old: sumOld }
-  }
-
-  function getTotalDr() {
-    var sum = 0
-    var sumOld = 0
-    workshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sum += parseInt(workshop.tdr)
-    })
-    oldWorkshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sumOld += parseInt(workshop.tdr)
+        sumOld += parseInt(getTotIndicator(workshop, idx))
     })
     return { current: sum, old: sumOld }
   }
@@ -177,13 +125,7 @@ export const useWorkshopStore = defineStore("workshops", () => {
     changeZoneMountedWorkshop,
     addWorkshop,
     addOldWorkshop,
-    getCompletionA,
-    getCompletionC,
-    getCompletionD,
-    getCompletionDr,
-    getTotalA,
-    getTotalC,
-    getTotalD,
-    getTotalDr
+    getCompletionIndicator,
+    getTotalIndicator
   }
 })

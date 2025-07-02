@@ -24,46 +24,47 @@ const resetCoords = () => {
     emit("resetCoords")
 }
 
-const displayAValue = computed(() => {
-    return store.getCompletionA().current + '/' + store.getTotalA().current
-})
 
 const displayCValue = computed(() => {
-    return store.getCompletionC().current + '/' + store.getTotalC().current
+    return store.getCompletionIndicator(1).current + '/' + store.getTotalIndicator(1).current
+})
+
+const displayAValue = computed(() => {
+    return store.getCompletionIndicator(2).current + '/' + store.getTotalIndicator(2).current
 })
 
 const displayDValue = computed(() => {
-    return store.getCompletionD().current + '/' + store.getTotalD().current
+    return store.getCompletionIndicator(3).current + '/' + store.getTotalIndicator(3).current
 })
 
 const displayDrValue = computed(() => {
-    return store.getCompletionDr().current + '/' + store.getTotalDr().current
+    return store.getCompletionIndicator(4).current + '/' + store.getTotalIndicator(4).current
 })
 
-const displayAEvolution = computed(() => {
-    var currentState = store.getCompletionA().current * 100 / store.getTotalA().current
-    var oldState = store.getCompletionA().old * 100 / store.getTotalA().old
+const displayCEvolution = computed(() => {
+    var currentState = store.getCompletionIndicator(1).current * 100 / store.getTotalIndicator(1).current
+    var oldState = store.getCompletionIndicator(1).old * 100 / store.getTotalIndicator(1).old
     var evolution = parseFloat((currentState - oldState).toFixed(1))
     return currentState.toFixed(1) + "%" + (evolution > 0 ? " (+" + evolution + "%)" : "")
 })
 
-const displayCEvolution = computed(() => {
-    var currentState = store.getCompletionC().current * 100 / store.getTotalC().current
-    var oldState = store.getCompletionC().old * 100 / store.getTotalC().old
+const displayAEvolution = computed(() => {
+    var currentState = store.getCompletionIndicator(2).current * 100 / store.getTotalIndicator(2).current
+    var oldState = store.getCompletionIndicator(2).old * 100 / store.getTotalIndicator(2).old
     var evolution = parseFloat((currentState - oldState).toFixed(1))
     return currentState.toFixed(1) + "%" + (evolution > 0 ? " (+" + evolution + "%)" : "")
 })
 
 const displayDEvolution = computed(() => {
-    var currentState = store.getCompletionD().current * 100 / store.getTotalD().current
-    var oldState = store.getCompletionD().old * 100 / store.getTotalD().old
+    var currentState = store.getCompletionIndicator(3).current * 100 / store.getTotalIndicator(3).current
+    var oldState = store.getCompletionIndicator(3).old * 100 / store.getTotalIndicator(3).old
     var evolution = parseFloat((currentState - oldState).toFixed(1))
     return currentState.toFixed(1) + "%" + (evolution > 0 ? " (+" + evolution + "%)" : "")
 })
 
 const displayDrEvolution = computed(() => {
-    var currentState = store.getCompletionDr().current * 100 / store.getTotalDr().current
-    var oldState = store.getCompletionDr().old * 100 / store.getTotalDr().old
+    var currentState = store.getCompletionIndicator(4).current * 100 / store.getTotalIndicator(4).current
+    var oldState = store.getCompletionIndicator(4).old * 100 / store.getTotalIndicator(4).old
     var evolution = parseFloat((currentState - oldState).toFixed(1))
     return currentState.toFixed(1) + "%" + (evolution > 0 ? " (+" + evolution + "%)" : "")
 })

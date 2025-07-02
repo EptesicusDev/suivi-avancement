@@ -122,7 +122,7 @@ const workshopCoordinates = [
   },
 ]
 
-fetch("/data/actuel.csv")
+fetch("/data/actuel_dem.csv")
   .then(response => response.text())
   .then(data => {
     var i
@@ -139,10 +139,10 @@ fetch("/data/actuel.csv")
         i++
         return true
       })
-      useWorkshopStore().addWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5], columns[6], columns[7], columns[8], columns[9], columns[10], columns[11], columns[12], columns[13], columns[14], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
+      useWorkshopStore().addWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5], columns[6], columns[7], columns[8], columns[9], columns[10], columns[11], columns[12], "", "", columns[13], columns[14], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
     })
   })
-fetch("/data/ancien.csv")
+fetch("/data/ancien_dem.csv")
   .then(response => response.text())
   .then(data => {
     var i

@@ -19,8 +19,8 @@ const showThumbnail = ref("")
 const emit = defineEmits(["closeDrawer"])
 
 const onCloseButtonClicked = () => {
+    store.dismountWorkshop()
     emit("closeDrawer")
-    console.log(store.currentWorkshop.color)
 }
 
 const updatePrintDate = () => {
@@ -35,24 +35,24 @@ const updatePrintDate = () => {
     }, 50)
 }
 
-const percentageA = computed(() => {
-    var evolution = Math.round(store.currentWorkshop.a * 100 / store.currentWorkshop.ta - store.currentOldWorkshop.a * 100 / store.currentOldWorkshop.ta)
-    return Math.round(store.currentWorkshop.a * 100 / store.currentWorkshop.ta) + "%" + (evolution > 0 ? " (" + (evolution > 0 ? "+" : "") + evolution + "%)" : "")
+const percentageC = computed(() => {
+    var evolution = Math.round(store.currentWorkshop.indicator1 * 100 / store.currentWorkshop.totIndicator1 - store.currentOldWorkshop.indicator1 * 100 / store.currentOldWorkshop.totIndicator1)
+    return Math.round(store.currentWorkshop.indicator1 * 100 / store.currentWorkshop.totIndicator1) + "%" + (evolution > 0 ? " (" + (evolution > 0 ? "+" : "") + evolution + "%)" : "")
 })
 
-const percentageC = computed(() => {
-    var evolution = Math.round(store.currentWorkshop.c * 100 / store.currentWorkshop.tc - store.currentOldWorkshop.c * 100 / store.currentOldWorkshop.tc)
-    return Math.round(store.currentWorkshop.c * 100 / store.currentWorkshop.tc) + "%" + (evolution > 0 ? " (" + (evolution > 0 ? "+" : "") + evolution + "%)" : "")
+const percentageA = computed(() => {
+    var evolution = Math.round(store.currentWorkshop.indicator2 * 100 / store.currentWorkshop.totIndicator2 - store.currentOldWorkshop.indicator2 * 100 / store.currentOldWorkshop.totIndicator2)
+    return Math.round(store.currentWorkshop.indicator2 * 100 / store.currentWorkshop.totIndicator2) + "%" + (evolution > 0 ? " (" + (evolution > 0 ? "+" : "") + evolution + "%)" : "")
 })
 
 const percentageD = computed(() => {
-    var evolution = Math.round(store.currentWorkshop.d * 100 / store.currentWorkshop.td - store.currentOldWorkshop.d * 100 / store.currentOldWorkshop.td)
-    return Math.round(store.currentWorkshop.d * 100 / store.currentWorkshop.td) + "%" + (evolution > 0 ? " (" + (evolution > 0 ? "+" : "") + evolution + "%)" : "")
+    var evolution = Math.round(store.currentWorkshop.indicator3 * 100 / store.currentWorkshop.totIndicator3 - store.currentOldWorkshop.indicator3 * 100 / store.currentOldWorkshop.totIndicator3)
+    return Math.round(store.currentWorkshop.indicator3 * 100 / store.currentWorkshop.totIndicator3) + "%" + (evolution > 0 ? " (" + (evolution > 0 ? "+" : "") + evolution + "%)" : "")
 })
 
 const percentageDr = computed(() => {
-    var evolution = Math.round(store.currentWorkshop.dr * 100 / store.currentWorkshop.tdr - store.currentOldWorkshop.dr * 100 / store.currentOldWorkshop.tdr)
-    return Math.round(store.currentWorkshop.dr * 100 / store.currentWorkshop.tdr) + "%" + (evolution > 0 ? " (" + (evolution > 0 ? "+" : "") + evolution + "%)" : "")
+    var evolution = Math.round(store.currentWorkshop.indicator4 * 100 / store.currentWorkshop.totIndicator4 - store.currentOldWorkshop.indicator4 * 100 / store.currentOldWorkshop.totIndicator4)
+    return Math.round(store.currentWorkshop.indicator4 * 100 / store.currentWorkshop.totIndicator4) + "%" + (evolution > 0 ? " (" + (evolution > 0 ? "+" : "") + evolution + "%)" : "")
 })
 </script>
 
@@ -87,12 +87,12 @@ const percentageDr = computed(() => {
                                     <IndicatorDefinitionComponent :title="'Caractérisation'"/>
                                 </dt>
                                 <dd class="mt-1 text-sm/6 sm:col-span-2 sm:mt-0 text-zinc-700 flex items-center">
-                                    <h6 class="grow">{{ store.currentWorkshop.c }}/{{ store.currentWorkshop.tc }}</h6>
+                                    <h6 class="grow">{{ store.currentWorkshop.indicator1 }}/{{ store.currentWorkshop.totIndicator1 }}</h6>
                                     <div class="flex justify-end">
                                         <span class="text-xs text-blue-600">{{ percentageC }}</span>
                                         <EvolutionIndicatorComponent
-                                            :has-changed="store.currentWorkshop.c > store.currentOldWorkshop.c"
-                                            :is-better="store.currentWorkshop.c > store.currentOldWorkshop.c" />
+                                            :has-changed="store.currentWorkshop.indicator1 > store.currentOldWorkshop.indicator1"
+                                            :is-better="store.currentWorkshop.indicator1 > store.currentOldWorkshop.indicator1" />
                                     </div>
                                 </dd>
                             </div>
@@ -102,12 +102,12 @@ const percentageDr = computed(() => {
                                     <IndicatorDefinitionComponent :title="'Assainissement'"/>
                                 </dt>
                                 <dd class="mt-1 text-sm/6 sm:col-span-2 sm:mt-0 text-zinc-700 flex items-center">
-                                    <h6 class="grow">{{ store.currentWorkshop.a }}/{{ store.currentWorkshop.ta }}</h6>
+                                    <h6 class="grow">{{ store.currentWorkshop.indicator2 }}/{{ store.currentWorkshop.totIndicator2 }}</h6>
                                     <div class="flex justify-end">
                                         <span class="text-xs text-blue-600">{{ percentageA }}</span>
                                         <EvolutionIndicatorComponent
-                                            :has-changed="store.currentWorkshop.a > store.currentOldWorkshop.a"
-                                            :is-better="store.currentWorkshop.a > store.currentOldWorkshop.a" />
+                                            :has-changed="store.currentWorkshop.indicator2 > store.currentOldWorkshop.indicator2"
+                                            :is-better="store.currentWorkshop.indicator2 > store.currentOldWorkshop.indicator2" />
                                     </div>
                                 </dd>
                             </div>
@@ -117,12 +117,12 @@ const percentageDr = computed(() => {
                                     <IndicatorDefinitionComponent :title="'Démantèlement'"/>
                                 </dt>
                                 <dd class="mt-1 text-sm/6 sm:col-span-2 sm:mt-0 text-zinc-700 flex items-center">
-                                    <h6 class="grow">{{ store.currentWorkshop.d }}/{{ store.currentWorkshop.td }}</h6>
+                                    <h6 class="grow">{{ store.currentWorkshop.indicator3 }}/{{ store.currentWorkshop.totIndicator3 }}</h6>
                                     <div class="flex">
                                         <span class="text-xs text-blue-600">{{ percentageD }}</span>
                                         <EvolutionIndicatorComponent
-                                            :has-changed="store.currentWorkshop.d > store.currentOldWorkshop.d"
-                                            :is-better="store.currentWorkshop.d > store.currentOldWorkshop.d" />
+                                            :has-changed="store.currentWorkshop.indicator3 > store.currentOldWorkshop.indicator3"
+                                            :is-better="store.currentWorkshop.indicator3 > store.currentOldWorkshop.indicator3" />
                                     </div>
                                 </dd>
                             </div>
@@ -132,12 +132,12 @@ const percentageDr = computed(() => {
                                     <IndicatorDefinitionComponent :title="'Déclassement radio'"/>
                                     </dt>
                                 <dd class="mt-1 text-sm/6 sm:col-span-2 sm:mt-0 text-zinc-700 flex items-center">
-                                    <h6 class="grow">{{ store.currentWorkshop.dr }}/{{ store.currentWorkshop.tdr }}</h6>
+                                    <h6 class="grow">{{ store.currentWorkshop.indicator4 }}/{{ store.currentWorkshop.totIndicator4 }}</h6>
                                     <div class="flex justify-end">
                                         <span class="text-xs text-blue-600">{{ percentageDr }}</span>
                                         <EvolutionIndicatorComponent
-                                            :has-changed="store.currentWorkshop.dr > store.currentOldWorkshop.dr"
-                                            :is-better="store.currentWorkshop.dr > store.currentOldWorkshop.dr" />
+                                            :has-changed="store.currentWorkshop.indicator4 > store.currentOldWorkshop.indicator4"
+                                            :is-better="store.currentWorkshop.indicator4 > store.currentOldWorkshop.indicator4" />
                                     </div>
                                 </dd>
                             </div>
@@ -146,7 +146,7 @@ const percentageDr = computed(() => {
                 </div>
             </div>
             <div class="px-3">
-                <BarGraphComponent />
+                <BarGraphComponent v-if="store.currentWorkshop.project == 'DEM'" />
             </div>
             <div class="hidden print absolute bottom-1 w-full text-center bot">
                 <p>{{ printDate }}</p>

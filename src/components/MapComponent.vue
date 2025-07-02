@@ -621,9 +621,11 @@ onMounted(() => {
                 map.removeLayer("3d-buildings")
             }
         })
+        var processed_workshops = []
         store.workshops.forEach((workshop) => {
-            if (workshop.zone != "4")
+            if (processed_workshops.includes(workshop.workshop))
                 return
+            processed_workshops.push(workshop.workshop)
             const el = document.createElement('div')
             el.classList = `text-${workshop.color}`
             el.innerHTML = `
@@ -656,7 +658,7 @@ onMounted(() => {
     */
 })
 
-defineExpose({ resetCoords })
+defineExpose({ resetCoords, resetObjectSelection })
 </script>
 
 <template>
