@@ -114,8 +114,6 @@ const clearMapResults = () => {
             <h3 class="text-black">Obtenez les coordonnées en cliquant sur la carte</h3>
             <p class="text-xs mb-1">[longitude, latitude]</p>
             <div id="map-edit-result">
-                <p>oe</p>
-                <p>oe</p>
             </div>
             <div class="flex space-x-1 mt-2">
                 <ButtonComponent @click="copyMapResults">
