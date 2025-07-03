@@ -20,6 +20,11 @@ const isEditing = ref(false)
 
 const toggleEditing = () => {
     isEditing.value = !isEditing.value
+    var canvas = document.getElementsByClassName("maplibregl-canvas")[0]
+    if(isEditing.value)
+        canvas.classList.add("cursor-crosshair")
+    else
+        canvas.classList.remove("cursor-crosshair")
 }
 
 const closeDrawer = () => {

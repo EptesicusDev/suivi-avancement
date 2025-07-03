@@ -122,8 +122,8 @@ const workshopCoordinates = [
   },
   {
     workshop: "RCD HAO",
-    x: -1.8792494400861983,
-    y: 49.678927508185325,
+    x: -1.878912524840814,
+    y: 49.678275600442845,
     image: "HAO",
     color: "orange"
   },
