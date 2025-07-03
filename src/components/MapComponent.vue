@@ -542,7 +542,7 @@ const onMouseUp = () => {
     }, 10)
 }
 
-const onWheel = () => { }
+const onWheel = () => {}
 
 onMounted(() => {
     const switchButton = document.getElementById("switch-perspective")
@@ -622,6 +622,7 @@ onMounted(() => {
             }
         })
         var processed_workshops = []
+        store.ysort()
         store.workshops.forEach((workshop) => {
             if (processed_workshops.includes(workshop.workshop))
                 return

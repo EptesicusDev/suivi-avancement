@@ -11,7 +11,7 @@ export const useWorkshopStore = defineStore("workshops", () => {
   function mountWorkshop(toBeMountedWorkshop) {
     currentWorkshop.value = toBeMountedWorkshop
     oldWorkshops.value.forEach((workshop) => {
-      if(workshop.workshop == toBeMountedWorkshop.workshop && workshop.zone == "4") {
+      if(workshop.workshop == toBeMountedWorkshop.workshop && (workshop.zone == "4" || workshop.project == "RCD")) {
         currentOldWorkshop.value = workshop
       }
     })
@@ -26,6 +26,10 @@ export const useWorkshopStore = defineStore("workshops", () => {
   function dismountWorkshop() {
     currentWorkshop.value = null
     currentOldWorkshop.value = null
+  }
+
+  function ysort() {
+    workshops.value.sort((a, b) => b.y - a.y)
   }
 
   // for mounted workshop
@@ -89,12 +93,12 @@ export const useWorkshopStore = defineStore("workshops", () => {
     var sumOld = 0
     workshops.value.forEach((workshop) => {
       if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4") {
-        sum += parseInt(getIndicator(workshop, idx))
+        sum += eval("workshop.indicator" + idx)
       }
     })
     oldWorkshops.value.forEach((workshop) => {
       if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4") {
-        sumOld += parseInt(getIndicator(workshop, idx))
+        sumOld += parseInt(eval("workshop.totIndicator" + idx))
       }
     })
     return { current: sum, old: sumOld }
@@ -122,6 +126,7 @@ export const useWorkshopStore = defineStore("workshops", () => {
     zoneOptions,
     mountWorkshop,
     dismountWorkshop,
+    ysort,
     changeZoneMountedWorkshop,
     addWorkshop,
     addOldWorkshop,

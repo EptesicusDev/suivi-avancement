@@ -98,18 +98,15 @@ p {
   color: #C50204;
 }
 
-.smooth-redim {
-  -moz-transition: width .3 ease, height .3 ease;
-  -ms-transition: width .3 ease, height .3 ease;
-  -o-transition: width .3 ease, height .3 ease;
-  -webkit-transition: width .3 ease, height .3 ease;
-  transition: width .3 ease, height .3 ease;
-}
-
 details {
   border: 1px var(--color-zinc-300) var(--tw-border-style);
   box-shadow: var(--shadow-md);
 }
+
+.apexcharts-toolbar {
+  display: none !important;
+}
+
 @media print {
   .drawer {
     width: 100vw;

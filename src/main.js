@@ -159,7 +159,47 @@ fetch("/data/ancien_dem.csv")
         i++
         return true
       })
-      useWorkshopStore().addOldWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5], columns[6], columns[7], columns[8], columns[9], columns[10], columns[11], columns[12], columns[13], columns[14], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
+      useWorkshopStore().addOldWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5], columns[6], columns[7], columns[8], columns[9], columns[10], columns[11], columns[12], "", "", columns[13], columns[14], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
+    })
+  })
+fetch("/data/actuel_rcd.csv")
+  .then(response => response.text())
+  .then(data => {
+    var i
+    const rows = data.split("\n")
+    rows.shift()
+    rows.forEach(row => {
+      i = 0
+      const columns = row.split(",")
+      if(columns.length == 0)
+        return
+      workshopCoordinates.every(workshop => {
+        if(workshop.workshop == columns[0])
+          return false
+        i++
+        return true
+      })
+      useWorkshopStore().addWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[6], columns[5], columns[8], columns[7], columns[10], columns[9], columns[12], columns[11], columns[14], columns[13], columns[15], columns[16], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
+    })
+  })
+fetch("/data/ancien_rcd.csv")
+  .then(response => response.text())
+  .then(data => {
+    var i
+    const rows = data.split("\n")
+    rows.shift()
+    rows.forEach(row => {
+      i = 0
+      const columns = row.split(",")
+      if(columns.length == 0)
+        return
+      workshopCoordinates.every((workshop) => {
+        if(workshop.workshop == columns[0])
+          return false
+        i++
+        return true
+      })
+      useWorkshopStore().addOldWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[6], columns[5], columns[8], columns[7], columns[10], columns[9], columns[12], columns[11], columns[14], columns[13], columns[15], columns[16], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
     })
   })
 

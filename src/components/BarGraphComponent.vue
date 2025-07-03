@@ -2,6 +2,8 @@
 import { onMounted, watch } from 'vue'
 import ApexCharts from 'apexcharts'
 import { useWorkshopStore } from '@/stores/workshops'
+import { useElementSize } from '@vueuse/core'
+import { useTemplateRef } from 'vue'
 
 const store = useWorkshopStore()
 
@@ -132,8 +134,11 @@ const refresh = () => {
         ]
     })
 }
+const parent = useTemplateRef("parent")
+const width = useElementSize(parent).width
 
 var chart
+
 onMounted(() => {
     chart = new ApexCharts(document.querySelector("#bar-chart"), chartConfig)
     chart.render()
@@ -143,10 +148,14 @@ onMounted(() => {
 watch(store, (o, n) => {
     refresh()
 })
+
+watch(width, () => {
+    refresh()
+})
 </script>
 
 <template>
-    <div class="relative flex flex-col bg-clip-border text-gray-700">
+    <div ref="parent" class="relative flex flex-col bg-clip-border text-gray-700">
         <div class="pb-0">
             <div id="bar-chart"></div>
         </div>

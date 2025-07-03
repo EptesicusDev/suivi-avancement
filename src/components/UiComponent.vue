@@ -83,7 +83,7 @@ const displayDrEvolution = computed(() => {
             <DataCardComponent :title="'Déclassement radiologique'" :value="displayDrValue"
                 :evolution="displayDrEvolution" />
         </RightFloatingComponent>
-        <div id="switch-perspective" class="absolute bottom-0 right-0 mb-21 mr-2 bg-white pointer-events-auto cursor-pointer p-2 shadow-md rounded-xl border border-zinc-300 text-sm font-semibold">
+        <div id="switch-perspective" class="absolute bottom-0 right-0 mb-20.75 mr-2 bg-white pointer-events-auto cursor-pointer p-2 shadow-md rounded-xl border border-zinc-300 text-sm font-semibold">
             2D
         </div>
         <div @click="resetCoords" id="reset-coords" class="absolute bottom-0 right-0 mb-10 mr-2 bg-white pointer-events-auto cursor-pointer p-2 shadow-md rounded-xl border border-zinc-300 text-sm font-semibold">
