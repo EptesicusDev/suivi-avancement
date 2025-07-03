@@ -114,7 +114,7 @@ details {
     background: none;
   }
 
-  .data-card, .print-button, .close-button, #switch-perspective, details, #map, .indicator-description, .zone-selector, .no-image, #reset-coords {
+  .data-card, .print-button, .close-button, #switch-perspective, details, #map, .indicator-description, .zone-selector, .no-image, #reset-coords, #map-edit {
     display: none;
   }
 

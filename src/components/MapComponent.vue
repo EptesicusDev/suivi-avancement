@@ -519,9 +519,9 @@ const resetObjectSelection = () => {
 
 const resetCoords = () => {
     map.flyTo({
-            center: startCoords,
-            essential: true // this animation is considered essential with respect to prefers-reduced-motion
-        });
+        center: startCoords,
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+    });
 }
 
 const onMouseDown = () => {
@@ -542,9 +542,12 @@ const onMouseUp = () => {
     }, 10)
 }
 
-const onWheel = () => {}
+const onWheel = () => { }
 
 onMounted(() => {
+    document.getElementById("map-edit").addEventListener('click', () => {
+        //console.log("moi aussi")
+    })
     const switchButton = document.getElementById("switch-perspective")
     map = new maplibregl.Map({
         container: 'map',
@@ -651,14 +654,11 @@ onMounted(() => {
         mapEl.addEventListener("mouseup", onMouseUp)
         mapEl.addEventListener("wheel", onWheel)
     })
-    /*
     // polygon drawing tool
     map.on('click', (e) => {
-        document.getElementById('coords').innerHTML += "<br>[" + e.lngLat.lng + ", " + e.lngLat.lat + "],"
+        document.getElementById('map-edit-result').innerHTML += "<p>[" + e.lngLat.lng + ", " + e.lngLat.lat + "],</p>"
     })
-    */
 })
-
 defineExpose({ resetCoords, resetObjectSelection })
 </script>
 

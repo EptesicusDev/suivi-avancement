@@ -20,7 +20,7 @@ const chartConfig = {
     dataLabels: {
         formatter: (val) => {
             if(val < 100 / numberOfItems) // is old value
-                return Math.round((val - 90 / numberOfItems) * 100000)
+                return Math.round((val - 100 / numberOfItems) * 100000)
             else // is current value
                 return Math.round((val - 100 / numberOfItems) * 100000)
         }
@@ -43,11 +43,11 @@ const chartConfig = {
         opacity: 1,
     },
     colors: [
-        '#ffc9c9', '#ff6467',
-        '#fee685', '#ffb900',
-        '#d8fa99', '#9ae600',
-        '#a4f4cf', '#00d492',
-        '#a2f4fd', '#00d3f3'
+        '#ABA3CC', '#52419A',
+        '#A3B8CC', '#649BD2',
+        '#A3C9CC', '#007A83',
+        '#A3CCB3', '#15B051',
+        '#F2CD91', '#FAA928',
     ],
     legend: {
         position: 'top',
@@ -86,7 +86,7 @@ const refresh = () => {
         series.push({
             name: name + " (ancien)",
             group: "old",
-            data: [90 / numberOfItems + oldValue / 100000]
+            data: [100 / numberOfItems + oldValue / 100000]
         })
         series.push({
             name: name,

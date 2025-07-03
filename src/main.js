@@ -120,6 +120,27 @@ const workshopCoordinates = [
     image: "no",
     color: "blue"
   },
+  {
+    workshop: "RCD HAO",
+    x: -1.8792494400861983,
+    y: 49.678927508185325,
+    image: "HAO",
+    color: "orange"
+  },
+  {
+    workshop: "SOC",
+    x: -1.8792494400861983,
+    y: 49.678927508185325,
+    image: "HAO",
+    color: "orange"
+  },
+  {
+    workshop: "PLH",
+    x: -1.8792494400861983,
+    y: 49.678927508185325,
+    image: "HAO",
+    color: "orange"
+  },
 ]
 
 fetch("/data/actuel_dem.csv")
