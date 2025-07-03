@@ -4,7 +4,6 @@ import ApexCharts from 'apexcharts'
 import { useWorkshopStore } from '@/stores/workshops'
 import { useElementSize } from '@vueuse/core'
 import { useTemplateRef } from 'vue'
-import { name } from '@vue/eslint-config-prettier/skip-formatting'
 
 const store = useWorkshopStore()
 const chartConfig = {
@@ -20,7 +19,10 @@ const chartConfig = {
     },
     dataLabels: {
         formatter: (val) => {
-            return val / 1000 + 'K'
+            if(val < 100 / numberOfItems) // is old value
+                return Math.round((val - 90 / numberOfItems) * 100000)
+            else // is current value
+                return Math.round((val - 100 / numberOfItems) * 100000)
         }
     },
     plotOptions: {
@@ -60,26 +62,43 @@ const parent = useTemplateRef("parent")
 const width = useElementSize(parent).width
 
 var chart
+var numberOfItems = 0
 
 const refresh = () => {
     var series = []
     var names = []
-    /*for(var i = 1; i > 5; i++) {
+    numberOfItems = 0
+    for(var i = 1; i < 5; i++) {
+        var name = eval("store.currentWorkshop.totIndicator" + i)
+        if(names.includes(name) || name == "")
+            continue
+        names.push(name)
+        numberOfItems++
+    }
+    names = []
+    for(var i = 1; i < 5; i++) {
         var name = eval("store.currentWorkshop.totIndicator" + i)
         var value = eval("store.currentWorkshop.indicator" + i)
-        if(names.includes(name) || value == 0)
+        var oldValue = eval("store.currentOldWorkshop.indicator" + i)
+        if(names.includes(name) || name == "")
             continue
         names.push(name)
         series.push({
-            name: name,
-            data: [value]
+            name: name + " (ancien)",
+            group: "old",
+            data: [90 / numberOfItems + oldValue / 100000]
         })
-    }*/
+        series.push({
+            name: name,
+            group: "current",
+            data: [100 / numberOfItems + value / 100000]
+        })
+    }
     chart.updateSeries(series)
 }
 
 onMounted(() => {
-    chart = new ApexCharts(document.querySelector("#bar-chart"), chartConfig)
+    chart = new ApexCharts(document.querySelector("#grouped-stacked-bar-chart"), chartConfig)
     chart.render()
     refresh()
 })
@@ -89,14 +108,14 @@ watch(store, (o, n) => {
 })
 
 watch(width, () => {
-    //refresh()
+    refresh()
 })
 </script>
 
 <template>
     <div ref="parent" class="relative flex flex-col bg-clip-border text-gray-700 pt-6">
         <div class="pb-0">
-            <div id="bar-chart"></div>
+            <div id="grouped-stacked-bar-chart"></div>
         </div>
     </div>
 </template>
