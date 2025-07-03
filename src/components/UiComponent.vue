@@ -85,7 +85,6 @@ const copyMapResults = () => {
     for(var child of document.getElementById("map-edit-result").children) {
         result += child.innerText + "\n"
     }
-    console.log(result)
     navigator.clipboard.writeText(result)
 }
 

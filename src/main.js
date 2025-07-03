@@ -82,7 +82,7 @@ const workshopCoordinates = [
     workshop: "DFG",
     x: -1.8806905440894184,
     y: 49.678038027213205,
-    image: "no",
+    image: "DFG V2",
     color: "green"
   },
   { // STE2
@@ -129,15 +129,15 @@ const workshopCoordinates = [
   },
   {
     workshop: "SOC",
-    x: -1.8792494400861983,
-    y: 49.678927508185325,
+    x: -1.8801212374169438,
+    y: 49.67805771038741,
     image: "HAO",
     color: "orange"
   },
   {
     workshop: "PLH",
-    x: -1.8792494400861983,
-    y: 49.678927508185325,
+    x: -1.879393069004493,
+    y: 49.67826777974372,
     image: "HAO",
     color: "orange"
   },
