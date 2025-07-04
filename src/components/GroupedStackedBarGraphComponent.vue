@@ -19,10 +19,7 @@ const chartConfig = {
     },
     dataLabels: {
         formatter: (val) => {
-            if(val < 100 / numberOfItems) // is old value
-                return Math.round((val - 100 / numberOfItems) * 100000)
-            else // is current value
-                return Math.round((val - 100 / numberOfItems) * 100000)
+            return Math.round((val - 100 / numberOfItems) * 100000)
         }
     },
     plotOptions: {
@@ -41,6 +38,20 @@ const chartConfig = {
     },
     fill: {
         opacity: 1,
+    },
+    tooltip: {
+        style: {
+            colors: "#616161",
+            fontSize: "12px",
+            fontFamily: "inherit",
+            fontWeight: 400
+        },
+        x: {
+            show: false
+        },
+        y: {
+            formatter: (val) => Math.round((val - 100 / numberOfItems) * 100000) + "%"
+        }
     },
     colors: [
         '#ABA3CC', '#52419A',

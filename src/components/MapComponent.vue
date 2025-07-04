@@ -625,9 +625,6 @@ const onMouseUp = () => {
 const onWheel = () => { }
 
 onMounted(() => {
-    document.getElementById("map-edit").addEventListener('click', () => {
-        //console.log("moi aussi")
-    })
     const switchButton = document.getElementById("switch-perspective")
     map = new maplibregl.Map({
         container: 'map',
@@ -637,7 +634,7 @@ onMounted(() => {
         style:
             `https://api.maptiler.com/maps/streets/style.json?key=${import.meta.env.VITE_MAPTILER_API_KEY}`,
         center: startCoords,
-        pitch: 55
+        pitch: sessionStorage.getItem("SUIVI_AVANCEMENT_PITCH") ? parseInt(sessionStorage.getItem("SUIVI_AVANCEMENT_PITCH")) : 55
     })
     map.on('load', () => {
         workshopBuildings.forEach((workshopBuilding) => {
@@ -696,12 +693,12 @@ onMounted(() => {
             if (pitch == 0) { // from 2D to 3D
                 map.setPitch(55)
                 switchButton.innerHTML = "2D"
-                map.addLayer(buildingLayer, labelLayerId)
+                sessionStorage.setItem("SUIVI_AVANCEMENT_PITCH", "55")
             }
             else { // from 3D to 2D
                 map.setPitch(0)
                 switchButton.innerHTML = "3D"
-                map.removeLayer("3d-buildings")
+                sessionStorage.setItem("SUIVI_AVANCEMENT_PITCH", "0")
             }
         })
         var processed_workshops = []
