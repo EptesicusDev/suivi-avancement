@@ -10,7 +10,7 @@ const chartConfig = {
     series: [],
     chart: {
         type: 'bar',
-        height: 350,
+        height: 150,
         stacked: true,
     },
     stroke: {
@@ -29,7 +29,10 @@ const chartConfig = {
     },
     xaxis: {
         min: 0,
-        max: 100
+        max: 100,
+        labels: {
+            show: false,
+        }
     },
     yaxis: {
         labels: {
@@ -54,11 +57,11 @@ const chartConfig = {
         }
     },
     colors: [
-        '#ABA3CC', '#52419A',
-        '#A3B8CC', '#649BD2',
-        '#A3C9CC', '#007A83',
-        '#A3CCB3', '#15B051',
-        '#F2CD91', '#FAA928',
+        '#52419A',
+        '#649BD2',
+        '#007A83',
+        '#15B051',
+        '#FAA928',
     ],
     legend: {
         position: 'top',
@@ -90,15 +93,9 @@ const refresh = () => {
     for(var i = 1; i < 5; i++) {
         var name = eval("store.currentWorkshop.totIndicator" + i)
         var value = eval("store.currentWorkshop.indicator" + i)
-        var oldValue = eval("store.currentOldWorkshop.indicator" + i)
         if(names.includes(name) || name == "")
             continue
         names.push(name)
-        series.push({
-            name: name + " (ancien)",
-            group: "old",
-            data: [100 / numberOfItems + oldValue / 100000]
-        })
         series.push({
             name: name,
             group: "current",
