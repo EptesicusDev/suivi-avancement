@@ -6,7 +6,7 @@ pool:
 
 variables:
   nodeVersion: '22.x'
-  appName: 'Avancement Physique UP2-400'
+  appName: 'fc-oay-appsvc-prd-up2-01'
 
 stages:
   - stage: Build
