@@ -36,7 +36,7 @@ stages:
         - task: CopyFiles@2
           inputs:
             Contents: 'src/assets/images/**'
-            TargetFolder: $(Build.ArtifactStagingDirectory)/dist/src/assets/images
+            TargetFolder: $(Build.ArtifactStagingDirectory)/dist
           displayName: 'Copying /images folder'
         - task: PublishBuildArtifacts@1
 
