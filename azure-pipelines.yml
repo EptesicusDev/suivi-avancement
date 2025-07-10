@@ -33,6 +33,11 @@ stages:
             Contents: 'data/**'
             TargetFolder: $(Build.ArtifactStagingDirectory)/dist
           displayName: 'Copying /data folder'
+        - task: CopyFiles@2
+          inputs:
+            Contents: 'src/assets/images/**'
+            TargetFolder: $(Build.ArtifactStagingDirectory)/dist/src/assets/images
+          displayName: 'Copying /images folder'
         - task: PublishBuildArtifacts@1
 
   - stage: Deploy
