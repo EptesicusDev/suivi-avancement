@@ -43,5 +43,5 @@ stages:
                     appType: webApp
                     appName: '$(appName)'
                     slotName: 'Production'
-                    package: '$(Pipeline.Workspace)/drop'
+                    package: '$(Pipeline.Workspace)/drop/dist'
                   displayName: 'Deploy to Azure Web App Service'
