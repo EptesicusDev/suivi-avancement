@@ -31,7 +31,7 @@ stages:
         - task: CopyFiles@2
           inputs:
             Contents: 'data/**'
-            TargetFolder: $(Build.ArtifactStagingDirectory)
+            TargetFolder: $(Build.ArtifactStagingDirectory)/dist
           displayName: 'Copying /data folder'
         - task: PublishBuildArtifacts@1
 
