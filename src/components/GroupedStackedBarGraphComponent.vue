@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, watch } from 'vue'
 import ApexCharts from 'apexcharts'
-import { useWorkshopStore } from '@/stores/workshops'
+import { useWorkshopStore } from '@/stores/workshopStore'
 import { useElementSize } from '@vueuse/core'
 import { useTemplateRef } from 'vue'
 

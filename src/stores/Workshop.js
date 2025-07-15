@@ -1,7 +1,8 @@
 export default class Workshop {
-    constructor(workshop, inb, projet, zone, end, indicator1, totIndicator1, indicator2, totIndicator2, indicator3, totIndicator3, indicator4, totIndicator4, indicator5, totIndicator5, updateDate, updateContent, x, y, image, color) {
+    constructor(workshop, inb, sector, projet, zone, end, indicator1, totIndicator1, indicator2, totIndicator2, indicator3, totIndicator3, indicator4, totIndicator4, indicator5, totIndicator5, updateDate, updateContent, x, y, image, color) {
         this.workshop = workshop
         this.inb = inb
+        this.sector = sector
         this.project = projet
         this.zone = zone
         this.end = end // fin de chantier

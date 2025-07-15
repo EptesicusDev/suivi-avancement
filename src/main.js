@@ -3,7 +3,7 @@ import Workshop from '@/stores/Workshop'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { useWorkshopStore } from "@/stores/workshops"
+import { useWorkshopStore } from "@/stores/workshopStore"
 
 import App from './App.vue'
 import router from './router'
@@ -160,7 +160,7 @@ fetch("/data/actuel_dem.csv")
         i++
         return true
       })
-      useWorkshopStore().addWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5], columns[6], columns[7], columns[8], columns[9], columns[10], columns[11], columns[12], "", "", columns[13], columns[14], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
+      useWorkshopStore().addWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5], columns[6], columns[7], columns[8], columns[9], columns[10], columns[11], columns[12], columns[13], "", "", columns[14], columns[15], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
     })
   })
 fetch("/data/ancien_dem.csv")
@@ -180,7 +180,7 @@ fetch("/data/ancien_dem.csv")
         i++
         return true
       })
-      useWorkshopStore().addOldWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5], columns[6], columns[7], columns[8], columns[9], columns[10], columns[11], columns[12], "", "", columns[13], columns[14], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
+      useWorkshopStore().addOldWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5], columns[6], columns[7], columns[8], columns[9], columns[10], columns[11], columns[12], columns[13], "", "", columns[14], columns[15], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
     })
   })
 fetch("/data/actuel_rcd.csv")
@@ -200,7 +200,7 @@ fetch("/data/actuel_rcd.csv")
         i++
         return true
       })
-      useWorkshopStore().addWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[6], columns[5], columns[8], columns[7], columns[10], columns[9], columns[12], columns[11], columns[14], columns[13], columns[15], columns[16], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
+      useWorkshopStore().addWorkshop(new Workshop(columns[0], columns[1], "",columns[2], columns[3], columns[4], columns[6], columns[5], columns[8], columns[7], columns[10], columns[9], columns[12], columns[11], columns[14], columns[13], columns[15], columns[16], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
     })
   })
 fetch("/data/ancien_rcd.csv")
@@ -220,7 +220,7 @@ fetch("/data/ancien_rcd.csv")
         i++
         return true
       })
-      useWorkshopStore().addOldWorkshop(new Workshop(columns[0], columns[1], columns[2], columns[3], columns[4], columns[6], columns[5], columns[8], columns[7], columns[10], columns[9], columns[12], columns[11], columns[14], columns[13], columns[15], columns[16], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
+      useWorkshopStore().addOldWorkshop(new Workshop(columns[0], columns[1], "",columns[2], columns[3], columns[4], columns[6], columns[5], columns[8], columns[7], columns[10], columns[9], columns[12], columns[11], columns[14], columns[13], columns[15], columns[16], workshopCoordinates[i].x, workshopCoordinates[i].y, workshopCoordinates[i].image, workshopCoordinates[i].color))
     })
   })
 

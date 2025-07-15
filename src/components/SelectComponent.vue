@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { useWorkshopStore } from '@/stores/workshops'
+import { useWorkshopStore } from '@/stores/workshopStore'
 import { onClickOutside } from '@vueuse/core'
 import { useTemplateRef } from 'vue'
 import PrintButtonComponent from './PrintButtonComponent.vue'

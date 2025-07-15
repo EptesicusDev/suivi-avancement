@@ -3,10 +3,11 @@ import InformationDrawerComponent from "./InformationDrawerComponent.vue"
 import BottomFloatingComponent from "./BottomFloatingComponent.vue"
 import TopFloatingComponent from "./TopFloatingComponent.vue"
 import DataCardComponent from "./DataCardComponent.vue"
-import { useWorkshopStore } from "@/stores/workshops"
+import { useWorkshopStore } from "@/stores/workshopStore"
 import { computed, ref, useTemplateRef } from "vue"
 import RightFloatingComponent from "./RightFloatingComponent.vue"
 import ButtonComponent from "./ButtonComponent.vue"
+import ToggleComponent from "./ToggleComponent.vue"
 
 const store = useWorkshopStore()
 const props = defineProps({
@@ -17,6 +18,9 @@ const props = defineProps({
 })
 const emit = defineEmits(["closeDrawer", "resetCoords"])
 const isEditing = ref(false)
+const showAregationModeToggle = computed(() => {
+    return store.currentWorkshop ? (store.currentWorkshop.project == "DEM" ? true : false) : false
+})
 
 const toggleEditing = () => {
     isEditing.value = !isEditing.value
@@ -34,7 +38,6 @@ const closeDrawer = () => {
 const resetCoords = () => {
     emit("resetCoords")
 }
-
 
 const displayCValue = computed(() => {
     return store.getCompletionIndicator(1).current + '/' + store.getTotalIndicator(1).current
@@ -91,6 +94,10 @@ const copyMapResults = () => {
 const clearMapResults = () => {
     document.getElementById("map-edit-result").innerHTML = ""
 }
+
+const agregationModeChange = () => {
+    store.toggleAgregationMode()
+}
 </script>
 
 <template>
@@ -105,6 +112,9 @@ const clearMapResults = () => {
             <DataCardComponent :title="'Démantèlement'" :value="displayDValue" :evolution="displayDEvolution" />
             <DataCardComponent :title="'Déclassement radiologique'" :value="displayDrValue"
                 :evolution="displayDrEvolution" />
+            <div v-if="showAregationModeToggle" class="mx-4 self-end pointer-events-auto">
+                <ToggleComponent @value-change="agregationModeChange" :label-before="'Par INB'" :label-after="'Par secteur'"/>
+            </div>
         </RightFloatingComponent>
         <div id="switch-perspective" class="absolute bottom-0 right-0 mb-31.75 mr-2 bg-white pointer-events-auto cursor-pointer p-2 shadow-md rounded-xl border border-zinc-300 text-sm font-semibold">
             2D
