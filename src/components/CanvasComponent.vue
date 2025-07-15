@@ -1,5 +1,5 @@
 <script setup>
-import { useWorkshopStore } from '@/stores/workshops'
+import { useWorkshopStore } from '@/stores/workshopStore'
 import { onMounted, ref } from 'vue'
 
 const emit = defineEmits(["openDrawer", "closeDrawer"])

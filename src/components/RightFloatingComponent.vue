@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
     <Transition>
-        <div class="absolute top-0 right-0 flex flex-col">
+        <div class="absolute top-0 right-0 flex flex-col gap-2 p-2">
             <slot></slot>
         </div>
     </Transition>

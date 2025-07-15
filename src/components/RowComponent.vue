@@ -1,6 +1,6 @@
 <script setup>
 import EvolutionIndicatorComponent from './EvolutionIndicatorComponent.vue'
-import { useWorkshopStore } from '@/stores/workshops'
+import { useWorkshopStore } from '@/stores/workshopStore'
 import { computed } from 'vue'
 import IndicatorDefinitionComponent from './IndicatorDefinitionComponent.vue'
 

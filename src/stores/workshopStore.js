@@ -7,6 +7,15 @@ export const useWorkshopStore = defineStore("workshops", () => {
   const zoneOptions = ref([])
   const currentWorkshop = ref(null)
   const currentOldWorkshop = ref(null)
+  const agregationMode = ref(false)
+
+  function toggleAgregationMode() {
+    agregationMode.value = !agregationMode.value
+  }
+
+  function getAgregationMode() {
+    return agregationMode.value
+  }
 
   function mountWorkshop(toBeMountedWorkshop) {
     currentWorkshop.value = toBeMountedWorkshop
@@ -58,21 +67,6 @@ export const useWorkshopStore = defineStore("workshops", () => {
     oldWorkshops.value.push(workshop)
   }
 
-  function getIndicator(workshop, idx) {
-    switch(idx) {
-      case 1:
-        return workshop.indicator1
-      case 2:
-        return workshop.indicator2
-      case 3:
-        return workshop.indicator3
-      case 4:
-        return workshop.indicator4
-      case 5:
-        return workshop.indicator5
-    }
-  }
-
   function getTotIndicator(workshop, idx) {
     switch(idx) {
       case 1:
@@ -92,14 +86,26 @@ export const useWorkshopStore = defineStore("workshops", () => {
     var sum = 0
     var sumOld = 0
     workshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4") {
-        sum += eval("workshop.indicator" + idx)
+      if(workshop.zone != "4")
+        return
+      if(currentWorkshop.value != null) {
+        if(!agregationMode.value && currentWorkshop.value.inb != workshop.inb)
+          return
+        if(agregationMode.value && currentWorkshop.value.sector != workshop.sector)
+          return
       }
+      sum += eval("workshop.indicator" + idx)
     })
     oldWorkshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4") {
-        sumOld += parseInt(eval("workshop.totIndicator" + idx))
+      if(workshop.zone != "4")
+        return
+      if(currentWorkshop.value != null) {
+        if(!agregationMode.value && currentWorkshop.value.inb != workshop.inb)
+          return
+        if(agregationMode.value && currentWorkshop.value.sector != workshop.sector)
+          return
       }
+      sumOld += parseInt(eval("workshop.totIndicator" + idx))
     })
     return { current: sum, old: sumOld }
   }
@@ -108,12 +114,26 @@ export const useWorkshopStore = defineStore("workshops", () => {
     var sum = 0
     var sumOld = 0
     workshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sum += parseInt(getTotIndicator(workshop, idx))
+      if(workshop.zone != "4")
+        return
+      if(currentWorkshop.value != null) {
+        if(!agregationMode.value && currentWorkshop.value.inb != workshop.inb)
+          return
+        if(agregationMode.value && currentWorkshop.value.sector != workshop.sector)
+          return
+      }
+      sum += parseInt(getTotIndicator(workshop, idx))
     })
     oldWorkshops.value.forEach((workshop) => {
-      if((currentWorkshop.value == null || workshop.inb == currentWorkshop.value.inb) && workshop.zone == "4")
-        sumOld += parseInt(getTotIndicator(workshop, idx))
+      if(workshop.zone != "4")
+        return
+      if(currentWorkshop.value != null) {
+        if(!agregationMode.value && currentWorkshop.value.inb != workshop.inb)
+          return
+        if(agregationMode.value && currentWorkshop.value.sector != workshop.sector)
+          return
+      }
+      sumOld += parseInt(getTotIndicator(workshop, idx))
     })
     return { current: sum, old: sumOld }
   }
@@ -124,6 +144,8 @@ export const useWorkshopStore = defineStore("workshops", () => {
     currentWorkshop,
     currentOldWorkshop,
     zoneOptions,
+    toggleAgregationMode,
+    getAgregationMode,
     mountWorkshop,
     dismountWorkshop,
     ysort,

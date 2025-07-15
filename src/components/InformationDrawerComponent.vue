@@ -2,7 +2,7 @@
 import CloseButtonComponent from './CloseButtonComponent.vue'
 import BarGraphComponent from './BarGraphComponent.vue'
 import SelectComponent from './SelectComponent.vue'
-import { useWorkshopStore } from '@/stores/workshops'
+import { useWorkshopStore } from '@/stores/workshopStore'
 import { computed, ref } from 'vue'
 import RowComponent from './RowComponent.vue'
 import GroupedStackedBarGraphComponent from './GroupedStackedBarGraphComponent.vue'
