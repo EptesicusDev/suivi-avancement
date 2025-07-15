@@ -7,6 +7,7 @@ import { useWorkshopStore } from "@/stores/workshops"
 import { computed, ref, useTemplateRef } from "vue"
 import RightFloatingComponent from "./RightFloatingComponent.vue"
 import ButtonComponent from "./ButtonComponent.vue"
+import ToggleComponent from "./ToggleComponent.vue"
 
 const store = useWorkshopStore()
 const props = defineProps({
@@ -91,6 +92,10 @@ const copyMapResults = () => {
 const clearMapResults = () => {
     document.getElementById("map-edit-result").innerHTML = ""
 }
+
+const agregationModeChange = () => {
+
+}
 </script>
 
 <template>
@@ -105,6 +110,9 @@ const clearMapResults = () => {
             <DataCardComponent :title="'Démantèlement'" :value="displayDValue" :evolution="displayDEvolution" />
             <DataCardComponent :title="'Déclassement radiologique'" :value="displayDrValue"
                 :evolution="displayDrEvolution" />
+            <div class="mx-4 self-end pointer-events-auto">
+                <ToggleComponent :value-change="agregationModeChange" :label-before="'Par INB'" :label-after="'Par secteur'"/>
+            </div>
         </RightFloatingComponent>
         <div id="switch-perspective" class="absolute bottom-0 right-0 mb-31.75 mr-2 bg-white pointer-events-auto cursor-pointer p-2 shadow-md rounded-xl border border-zinc-300 text-sm font-semibold">
             2D
